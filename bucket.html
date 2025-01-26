@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bucket List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-image: url('https://www.shutterstock.com/image-photo/bucket-list-experience-inspiration-motivation-260nw-403615447.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bucket-list-container {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .bucket-list-container:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4c6ef5;
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            text-decoration: underline;
+        }
+
+        .bucket-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bucket-list li {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s, transform 0.2s ease-in-out;
+            cursor: pointer;
+            color: black;
+        }
+
+        .bucket-list-container:hover .bucket-list li {
+            color: white;
+        }
+        .bucket-list-container:hover .bucket-list li:hover{
+            color: black;
+            background-color: #f0f0f0;
+        }
+
+        .bucket-list li:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.02);
+        }
+
+        .bucket-list li:active {
+            transform: scale(0.98);
+        }
+
+        .bucket-list li:nth-child(even):hover {
+            transform: rotate(1deg) scale(1.02);
+        }
+
+        .bucket-list li:nth-child(odd):hover {
+            transform: rotate(-1deg) scale(1.02);
+        }
+
+        .bucket-list li:last-child {
+            border-bottom: none;
+        }
+
+        .bucket-list li.completed {
+            color: #28a745 !important;
+            text-decoration: line-through;
+        }
+
+        .bucket-list input[type="checkbox"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 15px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .bucket-list input[type="checkbox"]:checked {
+            background-color: #28a745;
+            border-color: #28a745;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+            background-size: 16px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @media (max-width: 500px) {
+            main {
+                padding: 20px;
+            }
+
+            .bucket-list-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="bucket-list-container">
+            <h1>My Bucket List</h1>
+            <ul class="bucket-list">
+                <li><input type="checkbox"> Visit Japan</li>
+                <li><input type="checkbox"> Learn to play the guitar</li>
+                <li><input type="checkbox"> Learn Football</li>
+                <li><input type="checkbox"> Go to a place with your Friends</li>
+                <li><input type="checkbox"> Travel to America</li>
+                <li><input type="checkbox"> Write a book</li>
+                <li><input type="checkbox"> Visit Milan</li>
+            </ul>
+        </div>
+    </main>
+    <script>
+        const listItems = document.querySelectorAll('.bucket-list li');
+        listItems.forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    item.classList.add('completed');
+                    checkbox.disabled = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
